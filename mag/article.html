@@ -1,0 +1,57 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Visualisation article/billet</title>
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/1140.css">
+    <style type="text/css">
+		.column2{height: 80px;}
+    </style>
+</head>
+<body>
+    <div class="container12 examples">
+        <div class="row">
+			<a href="index.php">
+            <div class="column3 ombre">
+                <h1><img src="img/logo.png" /></h1>
+            </div>
+            </a>
+            <div class="column3 ombre">
+                <h1><a href="index.php?view=chfolder" title="Choisissez un dossier"><img src="img/RSS-Folder-Graphite-icon.png" /><a> <a href="javascript:history.back()"><img src="img/RSS-icon.png" /></a></h1>
+            </div>
+            <div class="column6 ombre">
+                {$currentFeed->getDescription()}
+            </div>
+        </div>
+{loop="$events"}
+		{if="$_['billet']==$value->getId()"}
+        <a href="{$value->getLink()}">
+        <div class="row">
+			<div class="column12 ombre">
+				<h2>{$value->getTitle()}</h2>
+				<h3>Cliquez ici pour consultation original sur le site {$allFeeds['idMap'][$value->getFeed()]['name']}</h3>
+				<h4>{$value->getPubdateWithInstant($time)}</h4>
+			</div>
+		</div>	
+		</a>
+        <div class="row">
+            <!--Pour le flux-->
+			<div class="column12 ombre">
+				{$value->getContent()}
+				{$value->getDescription()}
+            </div>
+		</div>
+        {/if} 
+{/loop}
+
+    </div>
+</body>
+</html>

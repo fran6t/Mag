@@ -1,0 +1,123 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Choix d'un flux</title>
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/1140.css">
+    <style type="text/css">
+		.impaire{height:400px;}
+		.paire{height:250px;}
+    </style>
+</head>
+<body>
+    <div class="container12 examples">
+        <div class="row">
+			<a href="index.php">
+            <div class="column3 ombre">
+                <h1><img src="img/logo.png" /></h1>
+            </div>
+            </a>
+            <a href="index.php?view=folder">
+            <div class="column3 ombre">
+                <h1><img src="img/RSS-Folder-Graphite-icon.png" /></h1>
+            </div>
+            </a>
+            <div class="column6 ombre">
+                <h2>{function="_t('FOLDER')"} : {$currentFolder->getName()}</h2>
+            </div>
+        </div>
+        <!-- {$compteur = 0} -->
+        <div class="row">
+			{$feeds=""}
+			<!--on récupere tous les flux lié au dossier-->
+			{if="isset($allFeedsPerFolder[$_['folder']])"}
+				{$feeds=$allFeedsPerFolder[$_['folder']]}
+			{/if}
+			{if="isset($allEvents[$_['folder']])"}
+				{$unreadEventsForFolder=$allEvents[$_['folder']]}
+			{/if}
+			{loop="feeds"}
+				<!-- {$compteur = $compteur + 1} -->
+				<a href="index.php?action=selectedFeed&feed={$value['id'] }&view=flux">
+				<div class="column2 paire  ombre">
+                <h2>{$value['name'] }</h2>
+                </div>
+                </a>
+                <!-- {if="$compteur >= 6"} -->
+						<!-- {$compteur = 0} -->
+						</div>
+						<div class="row">
+					 {/if}	
+			{/loop}
+
+            <div class="column2 ombre">
+                <a href="index.php">Feed precedent</a>
+            </div>
+            <div class="column8 ombre">
+                <h2><a href="index.php">Titre du Feed en cours</a></h2>
+            </div>
+            <div class="column2 ombre">
+                <a href="index.php">Feed suivant</a>
+            </div>
+        </div>
+        <div class="row">
+				<a href="article.html"> 
+				<div class="column8 impaire grayscale ombre">
+					<h2>The Case for Tim Scott Replacing Jim DeMint in the Senate</h2>
+					<h3>The Atlantic</h3>
+					<h4>4 hours ago</h4>
+					<p><img class="align-left" src="http://placehold.it/180x150/4D99E0/ffffff.png&text=180x150" width="300" height="250" />
+	Lorem ipsum dolor sit amet, consectetuer <em>adipiscing elit</em>, sed diam nonummy nibh euismod 
+	tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis 
+	nostrud exerci tation <strong>ullamcorper suscipit lobortis</strong> nisl ut aliquip ex ea commodo consequat. 
+	Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat</p>
+
+					<p>El illum dolore eu <span class="icon" data-icon="2"></span> feugiat nulla facilisis at vero eros et accumsan et iusto odio 
+	 ...</p>
+				</div>
+				</a>
+				<a href="articles1.html">
+				<div class="column4 impaire  ombre">
+					<h2>The Case for Tim Scott Replacing Jim DeMint in the Senate</h2>
+					<h3>The Atlantic</h3>
+					<h4>4 hours ago</h4>
+					<p><img class="align-left" src="http://placehold.it/180x150/4D99E0/ffffff.png&text=180x150" width="150" height="300" />
+	Lorem ipsum dolor sit amet, consectetuer <em>adipiscing elit</em>, sed diam nonummy nibh euismod 
+	tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam...</p>
+				</div>
+				</a>
+		</div>
+        <div class="row">
+				<div class="column4 paire  ombre">
+					<h2>Le cas d'Alphonse Daudet bientôt étudié</h2>
+					<h3>Blog passion Tarn-et-Garonne</h3>
+					<h4>il y a 3h et 30min</h4>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
+	magna aliquam erat volutpat. Ut wisi enim ad ...</p>
+				</div>
+				<div class="column4 paire  ombre">
+					<h2>The Case for Tim Scott Replacing Jim DeMint in the Senate</h2>
+					<h3>Blog passion Tarn-et-Garonne</h3>
+					<h4>il y a 3h et 30min</h4>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
+	magna aliquam erat volutpat. Ut wisi enim ad ...</p>
+				</div>
+				<div class="column4 paire  ombre">
+					<h2>Le cas d'Alphonse Daudet bientôt étudié</h2>
+					<h3>Blog passion Tarn-et-Garonne</h3>
+					<h4>il y a 3h et 30min</h4>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
+	magna aliquam erat volutpat. Ut wisi enim ad ...</p>
+				</div>
+		</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Affichage d'un flux</title>
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/1140.css">
+    <style type="text/css">
+.impaire{
+  height:400px;
+}
+.paire{
+  height:250px;
+}
+.column2{
+	height: 80px;
+}
+    </style>
+</head>
+<body>
+    <div class="container12 examples">
+        <div class="row">
+			<a href="index.php">
+            <div class="column3 ombre">
+                <h1><img src="img/logo.png" /></h1>
+            </div>
+            </a>
+            <div class="column3 ombre">
+                <h1><a href="index.php?view=chfolder" title"Choisissez un dossier"><img src="img/RSS-Folder-Graphite-icon.png" /><a> <a href="javascript:history.back()"><img src="img/RSS-icon.png" /></a></h1>
+            </div>
+            <div class="column6 ombre">
+                {$currentFeed->getDescription()}
+            </div>
+        </div>
+        <!-- {$compteur = 0} -->
+        <div class="row">
+            <!--Pour le flux-->
+            {loop="$events"}
+				<!-- {$compteur = $compteur + 1} -->
+				<a href="index.php?action=selectedFeed&feed={$_['feed']}&billet={$value->getId()}&view=article">
+				<div class="column4 paire  ombre">
+					<h2>{$value->getTitle()}</h2>
+					<h3>{$allFeeds['idMap'][$value->getFeed()]['name']}</h3>
+                    <h4>{$value->getPubdateWithInstant($time)}</h4>
+                    {function="Functions::extractIMG($value->getDescription())"}{function="Functions::txtCHAP($value->getDescription())"}
+                </div>
+                </a>
+                <!-- {if="$compteur >= 3"} -->
+						<!-- {$compteur = 0} -->
+						</div>
+						<div class="row">
+					 {/if}	
+			{/loop}
+		</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Choisir un dossier</title>
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/1140.css">
+    <style type="text/css">
+.impaire{
+  height:400px;
+}
+.paire{
+  height:250px;
+}
+.column2{
+	height: 80px;
+}
+    </style>
+</head>
+<body>
+    <div class="container12 examples">
+        <div class="row">
+			<a href="index.php">
+            <div class="column3 ombre">
+                <h1><img src="img/logo.png" /></h1>
+            </div>
+            </a>
+            <a href="index.php?view=chfolder">
+            <div class="column3 ombre">
+                <h1><img src="img/RSS-Folder-Graphite-icon.png" /></h1>
+            </div>
+            </a>
+            <div class="column6 ombre">
+                
+            </div>
+        </div>
+        <!-- {$compteur = 0} -->
+        <div class="row">
+			      
+                
+                         <!--Pour chaques dossier-->
+                        {loop="folders"}
+                        
+                            {$feeds=""}
+                            <!--on récupere tous les flux lié au dossier-->
+                              {if="isset($allFeedsPerFolder[$value->getId()])"}
+                                  {$feeds=$allFeedsPerFolder[$value->getId()]}
+                              {/if}
+                              {if="isset($allEvents[$value->getId()])"}
+                                  {$unreadEventsForFolder=$allEvents[$value->getId()]}
+                              {/if}
+
+                    <!-- DOSSIER -->
+
+                         <!-- affichage de tous les dossiers -->
+                            {if="$unreadEventsForFolder>0"}
+                            <!-- cas de dossier avec des non lus -->
+                            
+                              <!--  {function="Plugin::callHook("menu_pre_folder_link", array(&$value))"} -->
+                                <!-- {$compteur = $compteur + 1} -->
+                                <a href="index.php?action=selectedFolder&amp;folder={$value->getId()}&view=chflux">
+                                <div class="column2 paire  ombre">
+                                <h2>{$value->getName()}</h2> 
+                                <h3>{if="$unreadEventsForFolder!=0"}{$unreadEventsForFolder} {function="_t('UNREAD')"}{/if}</h3>
+                                {function="Plugin::callHook("menu_post_folder_link", array(&$value))"}
+                                </div>
+                                </a>
+                
+                            {else}
+                            <!-- cas de dossier sans non lus donc à cacher si on passe dans l'autre mode -->
+                
+                              <!--  {function="Plugin::callHook("menu_pre_folder_link", array(&$value))"} -->
+								<!-- {$compteur = $compteur + 1} -->
+								<a href="index.php?action=selectedFolder&amp;folder={$value->getId()}&view=chflux">
+								<div class="column2 paire  ombre">
+                                <h2>{$value->getName()}</h2>
+                                <h3>{if="$unreadEventsForFolder!=0"}{$unreadEventsForFolder} {function="_t('UNREAD')"}{/if}</h3>
+                                {function="Plugin::callHook("menu_post_folder_link", array(&$value))"}
+                                </div>
+                                </a>
+                
+                            {/if}
+                            <!-- {if="$compteur >= 6"} -->
+								<!-- {$compteur = 0} -->
+								</div>
+								<div class="row">
+							{/if}			
+                        <!-- FIN FLUX DU DOSSIER -->
+                    <!-- FIN DOSSIER -->
+                    {$unreadEventsForFolder=0}
+                    {/loop}
+		</div>
+    </div>
+</body>
+</html>
