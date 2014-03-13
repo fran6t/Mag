@@ -20,4 +20,5 @@ La liste de TODO est longue :
 * [<a="https://github.com/fran6t/MagFonctions">fait voir plugin MagFonctions</a>] sortir les fonctions du coeur de Leed pour les mettre dans un Plugin
 * mettre en grisé automatiquement les billet ou articles qui auront été lus 
 
-Pour que le thème fonctionne il faut donc faire une sauvegarde du fichier Functions.class.php qui est à la racine de votre Leed et le remplacer par celui du thème.  
+Pour que le thème fonctionne il faut impérativement installer le plugin MagFontions qui posséde des fonctions 
+de traitement PHP difficiles à placer dans un thème.
