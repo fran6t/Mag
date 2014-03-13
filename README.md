@@ -13,10 +13,12 @@ Partant de là, vous devrez alors choisir un Dossier, puis un Flux pour arriver 
 Il s'agit dans ce thème uniquement de lecture façon magazine pas de possibilité d'agir.  
 
 La liste de TODO est longue :
-* implémenter la partie javascript pour navigation horizontale
+
+* implémenter la partie javascript pour navigation horizontale (Billet precedent ou suivant, Flux precedent ou suivant)
 * mettre en place un système de cache afin de ne pas solliciter les chargements d'images pour tester les tailles
-* debugguer le troncage de flux
-* trouver un système ou un arrangement pour mettre les fonctions necessaires au thème dans le coeur de Leed (dans l'immédiat il a été recopié le fichier modifié Functions.class.php dans le repertoire mag du thème. 
+* debugguer le troncage de flux (les fonctions mises dans le plugin renvoient des messages d'erreur avec certains flux)
+* [<a="https://github.com/fran6t/MagFonctions">fait voir plugin MagFonctions</a>] sortir les fonctions du coeur de Leed pour les mettre dans un Plugin
 * mettre en grisé automatiquement les billet ou articles qui auront été lus 
 
-Pour que le thème fonctionne il faut donc faire une sauvegarde du fichier Functions.class.php qui est à la racine de votre Leed et le remplacer par celui du thème.  
+Pour que le thème fonctionne il faut impérativement installer le plugin MagFontions qui posséde des fonctions 
+de traitement PHP difficiles à placer dans un thème.

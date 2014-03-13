@@ -22,6 +22,14 @@
 .column2{
 	height: 80px;
 }
+/*
+.imgmag {
+	float:left; 
+	max-width: 100%;
+	max-height: 100px;
+	padding-right: 1em;
+}
+*/
     </style>
 </head>
 <body>
@@ -49,7 +57,7 @@
 					<h2>{$value->getTitle()}</h2>
 					<h3>{$allFeeds['idMap'][$value->getFeed()]['name']}</h3>
                     <h4>{$value->getPubdateWithInstant($time)}</h4>
-                    {function="Functions::extractIMG($value->getDescription())"}{function="Functions::txtCHAP($value->getDescription())"}
+                    {function="FunctionsMag::extractIMG($value->getDescription())"}{function="FunctionsMag::txtCHAP($value->getDescription())"}
                 </div>
                 </a>
                 <!-- {if="$compteur >= 3"} -->
