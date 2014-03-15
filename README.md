@@ -18,7 +18,8 @@ La liste de TODO est longue :
 * mettre en place un système de cache afin de ne pas solliciter les chargements d'images pour tester les tailles
 * debugguer le troncage de flux (les fonctions mises dans le plugin renvoient des messages d'erreur avec certains flux)
 * [<a="https://github.com/fran6t/MagFonctions">fait voir plugin MagFonctions</a>] sortir les fonctions du coeur de Leed pour les mettre dans un Plugin
-* mettre en grisé automatiquement les billet ou articles qui auront été lus 
+* mettre en grisé automatiquement les billet ou articles qui auront été lus
+* pour les flux tronqués ou dépouillés d'image, prévoir un analyseur permettant de décortiquer facilement le site source et ainsi améliorer sa présentation.  
 
 Pour que le thème fonctionne il faut impérativement installer le plugin MagFontions qui posséde des fonctions 
 de traitement PHP difficiles à placer dans un thème.
