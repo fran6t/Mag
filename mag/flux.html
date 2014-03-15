@@ -14,10 +14,12 @@
     <link rel="stylesheet" href="css/1140.css">
     <style type="text/css">
 .impaire{
-  height:400px;
+  height:380px;
+  max-height:380px; 
 }
 .paire{
-  height:250px;
+  height:380px;
+  max-height:380px;
 }
 .column2{
 	height: 80px;
@@ -57,7 +59,7 @@
 					<h2>{$value->getTitle()}</h2>
 					<h3>{$allFeeds['idMap'][$value->getFeed()]['name']}</h3>
                     <h4>{$value->getPubdateWithInstant($time)}</h4>
-                    {function="FunctionsMag::extractIMG($value->getDescription())"}{function="FunctionsMag::txtCHAP($value->getDescription())"}
+                    {function="FunctionsMag::extractIMG($value->getDescription())"}
                 </div>
                 </a>
                 <!-- {if="$compteur >= 3"} -->
