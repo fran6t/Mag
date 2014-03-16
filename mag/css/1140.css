@@ -287,6 +287,7 @@ padding-left:5px;
 padding-right:5px;
 }
 
+
 h3{
 font-size:0.9em;
 margin:10px 0 10px 0;
@@ -344,6 +345,7 @@ a:hover{}
         -moz-filter: grayscale(1);
         -o-filter: grayscale(1);
         -ms-filter: grayscale(1);
+        color: #9CA4A3;
 }
 .grayscale img:hover, .grayscale h2:hover, .grayscale h3:hover, .grayscale h4:hover, .grayscale:hover p
 {
@@ -352,6 +354,7 @@ a:hover{}
         -moz-filter: grayscale(0);
         -o-filter: grayscale(0);
         -ms-filter: grayscale(0);
+        color: #9CA4A3;
 }
 .ombre {
 	/* obtenu avec generateur css3 http://www.supportduweb.com/generateur-ombre-css3-box-shadow-code-webkit-moz-ombre-portee-flou-simple-generer-propriete-css3.html */

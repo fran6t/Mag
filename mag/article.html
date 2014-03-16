@@ -33,7 +33,7 @@
         </div>
 {loop="$events"}
 		{if="$_['billet']==$value->getId()"}
-        <a href="{$value->getLink()}">
+        <a href="{$value->getLink()}" target="_blank">
         <div class="row">
 			<div class="column12 ombre">
 				<h2>{$value->getTitle()}</h2>
