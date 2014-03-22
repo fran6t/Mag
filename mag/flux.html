@@ -32,6 +32,7 @@
 	padding-right: 1em;
 }
 */
+
     </style>
 </head>
 <body>
@@ -43,32 +44,45 @@
             </div>
             </a>
             <div class="column3 ombre">
-                <h1><a href="index.php?view=chfolder" title"Choisissez un dossier"><img src="img/RSS-Folder-Graphite-icon.png" /><a> <a href="javascript:history.back()"><img src="img/RSS-icon.png" /></a></h1>
+                <h1><a href="index.php?view=chfolder" title"Choisissez un dossier"><img src="img/RSS-Folder-Graphite-icon.png" /><a> <a href="index.php?action=selectedFolder&folder={$currentFeed->getFolder()}&view=chflux"><img src="img/RSS-icon.png" /></a></h1>
             </div>
             <div class="column6 ombre">
                 {$currentFeed->getDescription()}
             </div>
         </div>
-        <!-- {$compteur = 0} -->
+        {function="FunctionsMag::navFlux($_['feed'],$currentFeed->getFolder(),$currentFeed->getName())"}
         <div class="row">
             <!--Pour le flux-->
             {loop="$events"}
-				<!-- {$compteur = $compteur + 1} -->
-				<a href="index.php?action=selectedFeed&feed={$_['feed']}&billet={$value->getId()}&view=article">
-				<div class="column4 paire  ombre">
+				<a onclick="readThis(this,{$value->getId()},'title');" href="index.php?action=selectedFeed&feed={$_['feed']}&billet={$value->getId()}&view=article">
+				<div class="column4 paire ombre {if="$value->getUnread()!='1'"}grayscale{/if}">
 					<h2>{$value->getTitle()}</h2>
 					<h3>{$allFeeds['idMap'][$value->getFeed()]['name']}</h3>
                     <h4>{$value->getPubdateWithInstant($time)}</h4>
                     {function="FunctionsMag::extractIMG($value->getDescription())"}
                 </div>
                 </a>
-                <!-- {if="$compteur >= 3"} -->
-						<!-- {$compteur = 0} -->
+                {if="$counter >= 2"}
+					<!--	{$counter = -1} -->
 						</div>
 						<div class="row">
 					 {/if}	
 			{/loop}
 		</div>
     </div>
+<script type="text/javascript" src="js/libs/jqueryAndModernizr.min.js"> </script>
+<script type="text/javascript">
+function readThis(element,id,from,callback){
+	$.ajax({
+            url: "./action.php?action=readContent",
+            data:{id:id},
+            success:function(msg){
+                if(msg.status == 'noconnect') {
+                    alert("Vous devez être connecté");
+                }
+            }
+        });
+}
+</script>
 </body>
 </html>
