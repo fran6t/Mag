@@ -25,12 +25,13 @@
             </div>
             </a>
             <div class="column3 ombre">
-                <h1><a href="index.php?view=chfolder" title="Choisissez un dossier"><img src="img/RSS-Folder-Graphite-icon.png" /><a> <a href="javascript:history.back()"><img src="img/RSS-icon.png" /></a></h1>
+                <h1><a href="index.php?view=chfolder" title="Choisissez un dossier"><img src="img/RSS-Folder-Graphite-icon.png" /><a> <a href="index.php?action=selectedFeed&feed={$_['feed']}&view=flux"><img src="img/RSS-icon.png" /></a></h1>
             </div>
             <div class="column6 ombre">
                 {$currentFeed->getDescription()}
             </div>
         </div>
+        {function="FunctionsMag::navArticle($_['feed'],$_['billet'],$currentFeed->getName())"}
 {loop="$events"}
 		{if="$_['billet']==$value->getId()"}
         <a href="{$value->getLink()}" target="_blank">
@@ -53,5 +54,19 @@
 {/loop}
 
     </div>
+<script type="text/javascript" src="js/libs/jqueryAndModernizr.min.js"> </script>
+<script type="text/javascript">
+function readThis(element,id,from,callback){
+	$.ajax({
+            url: "./action.php?action=readContent",
+            data:{id:id},
+            success:function(msg){
+                if(msg.status == 'noconnect') {
+                    alert("Vous devez être connecté");
+                }
+            }
+        });
+}
+</script>
 </body>
 </html>
