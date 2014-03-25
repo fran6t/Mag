@@ -57,9 +57,10 @@
 				<a onclick="readThis(this,{$value->getId()},'title');" href="index.php?action=selectedFeed&feed={$_['feed']}&billet={$value->getId()}&view=article">
 				<div class="column4 paire ombre {if="$value->getUnread()!='1'"}grayscale{/if}">
 					<h2>{$value->getTitle()}</h2>
-					<h3>{$allFeeds['idMap'][$value->getFeed()]['name']}</h3>
+					<!-- <h3>{$allFeeds['idMap'][$value->getFeed()]['name']}</h3> -->
                     <h4>{$value->getPubdateWithInstant($time)}</h4>
-                    {function="FunctionsMag::extractIMG($value->getDescription())"}
+                    {function="FunctionsMag::fcomptage()"}
+                    {function="FunctionsMag::extractIMG($value->getDescription(),$value->getId(),$value->getLink(),$_['feed'])"}
                 </div>
                 </a>
                 {if="$counter >= 2"}
